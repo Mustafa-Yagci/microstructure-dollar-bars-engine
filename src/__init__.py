@@ -1,7 +1,7 @@
 """
 microstructure-dollar-bars-engine: High-Frequency Market Microstructure & Dollar Bars Engine.
 
-Author: Mustafa Yağcı (https://github.com/yotova)
+Author: Mustafa Yağcı (https://github.com/Mustafa-Yagci)
 License: MIT
 """
 

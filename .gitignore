@@ -16,3 +16,5 @@ venv/
 .DS_Store
 *.swp
 *.bak
+
+.github/

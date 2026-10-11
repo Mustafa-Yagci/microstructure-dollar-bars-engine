@@ -448,7 +448,7 @@ def build_dashboard():
 
   <footer>
     Quantitative Market Microstructure Engine by <strong>Mustafa Yağcı</strong> &bull;
-    <a href="https://github.com/yotova/microstructure-dollar-bars-engine" target="_blank">GitHub: yotova/microstructure-dollar-bars-engine</a> &bull;
+    <a href="https://github.com/Mustafa-Yagci/microstructure-dollar-bars-engine" target="_blank">GitHub: Mustafa-Yagci/microstructure-dollar-bars-engine</a> &bull;
     MIT License 2026
   </footer>
 

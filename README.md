@@ -1,6 +1,6 @@
 # Microstructure Dollar Bars Engine (`microstructure-dollar-bars-engine`)
 
-[![Microstructure CI](https://github.com/yotova/microstructure-dollar-bars-engine/actions/workflows/tests.yml/badge.svg)](https://github.com/yotova/microstructure-dollar-bars-engine/actions)
+[![Microstructure CI](https://github.com/Mustafa-Yagci/microstructure-dollar-bars-engine/actions/workflows/tests.yml/badge.svg)](https://github.com/Mustafa-Yagci/microstructure-dollar-bars-engine/actions)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%20%7C%203.11-blue.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Normality Gain](https://img.shields.io/badge/Normality%20Gain-%2B83.9%25-10b981.svg)](#)
@@ -131,7 +131,7 @@ microstructure-dollar-bars-engine/
 
 ### 5.1 Installation
 ```bash
-git clone https://github.com/yotova/microstructure-dollar-bars-engine.git
+git clone https://github.com/Mustafa-Yagci/microstructure-dollar-bars-engine.git
 cd microstructure-dollar-bars-engine
 pip install -r requirements.txt
 ```
@@ -198,6 +198,6 @@ Open `docs/index.html` directly in any web browser:
 
 ## 7. Author & License
 
-- **Author**: Mustafa Yağcı ([@yotova](https://github.com/yotova))
+- **Author**: Mustafa Yağcı ([@Mustafa-Yagci](https://github.com/Mustafa-Yagci))
 - **Role**: Quantitative Trading & Systems Engineer
 - **License**: [MIT License](LICENSE) (2026)
