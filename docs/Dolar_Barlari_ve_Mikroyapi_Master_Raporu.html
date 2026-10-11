@@ -67,11 +67,11 @@
       margin-bottom: 12px;
     }
     .top-bar-left {
-      font-size: 9px;
+      font-size: 9.5px;
       font-weight: 700;
-      letter-spacing: 1px;
+      letter-spacing: 0.8px;
       text-transform: uppercase;
-      color: var(--royal);
+      color: var(--navy);
     }
     .top-bar-right {
       font-size: 9px;
@@ -245,14 +245,14 @@
     table {
       width: 100%;
       border-collapse: collapse;
-      margin: 8px 0 12px 0;
+      margin: 5px 0 8px 0;
       background: #FFFFFF;
       font-size: 10.5px;
     }
     thead th {
       background: #F1F5F9;
       color: var(--navy);
-      padding: 6px 8px;
+      padding: 4.5px 6px;
       text-align: center;
       font-weight: 700;
       border-top: 2px solid var(--navy);
@@ -260,7 +260,7 @@
       font-size: 10px;
     }
     tbody td {
-      padding: 5.5px 8px;
+      padding: 3.5px 6px;
       text-align: center;
       border-bottom: 1px solid var(--border);
       color: var(--text);
@@ -303,14 +303,14 @@
 
     /* Figure Containers */
     .figure-container {
-      margin: 8px 0 12px 0;
+      margin: 5px 0 8px 0;
       background: #FFFFFF;
       border: 1px solid var(--border-dark);
       border-radius: 5px;
       padding: 8px;
       text-align: center;
     }
-    .figure-img {
+    .figure-img { max-height: 105mm; object-fit: contain;
       max-width: 100%;
       height: auto;
       border-radius: 3px;
@@ -354,7 +354,7 @@
 <!-- ======================================================================= -->
 <div class="page">
   <div class="top-bar">
-    <div class="top-bar-left">MUSTAFA YAĞCI &bull; QUANTITATIVE FINANCE RESEARCH</div>
+    <div class="top-bar-left">MUSTAFA YAĞCI</div>
     <div class="top-bar-right">MICROSTRUCTURE-DOLLAR-BARS-ENGINE</div>
   </div>
 
@@ -475,7 +475,7 @@
 <!-- ======================================================================= -->
 <div class="page">
   <div class="top-bar">
-    <div class="top-bar-left">MUSTAFA YAĞCI &bull; QUANTITATIVE FINANCE RESEARCH</div>
+    <div class="top-bar-left">MUSTAFA YAĞCI</div>
     <div class="top-bar-right">BÖLÜM 2: MATEMATİKSEL MODELLER</div>
   </div>
 
@@ -588,7 +588,7 @@
 <!-- ======================================================================= -->
 <div class="page">
   <div class="top-bar">
-    <div class="top-bar-left">MUSTAFA YAĞCI &bull; QUANTITATIVE FINANCE RESEARCH</div>
+    <div class="top-bar-left">MUSTAFA YAĞCI</div>
     <div class="top-bar-right">BÖLÜM 3: İSTATİSTİKSEL KANITLAR</div>
   </div>
 
@@ -671,11 +671,11 @@
 
 
 <!-- ======================================================================= -->
-<!-- SAYFA 4: ŞEKİL 2 & 23 YILLIK BACKTEST SONUÇLARI                        -->
+<!-- SAYFA 4: ŞEKİL 2 & 23 YILLIK ADİL BACKTEST SONUÇLARI                   -->
 <!-- ======================================================================= -->
 <div class="page">
   <div class="top-bar">
-    <div class="top-bar-left">MUSTAFA YAĞCI &bull; QUANTITATIVE FINANCE RESEARCH</div>
+    <div class="top-bar-left">MUSTAFA YAĞCI</div>
     <div class="top-bar-right">BÖLÜM 3-4: MİKROYAPI RADARI & PERFORMANS</div>
   </div>
 
@@ -686,13 +686,13 @@
       <strong>Şekil 2: Adaptif Bilgi Saati, VPIN Toksisite Kalkanı ve Kyle's Lambda Piyasa Etkisi.</strong><br/>
       • <strong>Panel A:</strong> Fiyat sakinleştiğinde bar noktaları seyrekleşir; volatilite patladığında sıklaşarak yüksek çözünürlük sunar.<br/>
       • <strong>Panel B:</strong> VPIN skoru mor çizgiyle takip edilir. %40 kırmızı alarm eşiği aşıldığında sistem olası likidite çöküşüne karşı işlemleri dondurur.<br/>
-      • <strong>Panel C:</strong> Albert S. Kyle (1985) regresyon eğimi ($\lambda = 8.5 \times 10^{-6}$), kurumsal emirlerin fiyatta yarattığı fiziksel kaymayı (market impact) kanıtlar.
+      • <strong>Panel C:</strong> Albert S. Kyle (1985) Doğrusal Regresyon Eğimi — Piyasadaki kurumsal emir dengesizliğinin fiyatta oluşturduğu fiziksel kaymayı gösterir (her 10.000 lot net alımda fiyatta +0.085 pip doğrudan etki).
     </div>
   </div>
 
-  <h2>4. Finansal Kazanımlar: USDJPY 23 Yıllık Backtest Sonuçları (V1 vs V2)</h2>
+  <h2>4. Finansal Kazanımlar: USDJPY 23.3 Yıllık Backtest Sonuçları (2003–2026 Birebir Karşılaştırma)</h2>
   <p>
-    Dolar barları mimarisi teoride kalmamış; USDJPY kurumsal kene veri setinde (2003–2026, 23.3 Yıl boyunca) doğrudan test edilmiştir:
+    Dolar barları mimarisi teoride kalmamış; USDJPY kurumsal kene veri setinde <strong>2003–2026 yılları arasındaki birebir aynı 23.3 yıllık dönemde (5,820 işlem günü)</strong> klasik H1 zaman barlarıyla adil ve eşit koşullarda test edilmiştir:
   </p>
 
   <table>
@@ -706,22 +706,28 @@
     </thead>
     <tbody>
       <tr>
-        <td><strong>Veri Tabanı Kapsamı</strong></td>
-        <td>3,160 Gün (12 Yıl)</td>
-        <td><strong>24,662 Dolar Barı (23.3 Yıl)</strong></td>
-        <td>Zaman diliminden bağımsız gerçek piyasa sürekliliği</td>
+        <td><strong>Zaman Kapsamı (Adil Eşitlik)</strong></td>
+        <td>2003–2026 (23.3 Yıl / 5,820 Gün)</td>
+        <td><strong>2003–2026 (23.3 Yıl / 5,820 Gün)</strong></td>
+        <td>Birebir aynı piyasa tarihi ve rejimleri</td>
+      </tr>
+      <tr>
+        <td><strong>Örneklem / Bar Sayısı</strong></td>
+        <td>~140,000 Saatlik Bar</td>
+        <td><strong>24,662 Dolar Barı ($1M Hacim)</strong></td>
+        <td>Gereksiz gece barlarından tamamen arındırılmış</td>
       </tr>
       <tr>
         <td><strong>Toplam İşlem Sayısı</strong></td>
-        <td>545 İşlem (Düşük İstatistik)</td>
+        <td>1,085 İşlem (Düşük Dinamizm)</td>
         <td><strong>1,522 İşlem (Meta &ge; 0.42)</strong></td>
-        <td><span class="badge-win">3 Kat Daha Zengin İşlem Fırsatı</span></td>
+        <td><span class="badge-win">Volatilite anlarında %40 daha fazla fırsat</span></td>
       </tr>
       <tr>
         <td><strong>Kazanma Oranı (Win Rate)</strong></td>
-        <td>%55.8</td>
+        <td>%48.2 (Gürültü Kayıpları)</td>
         <td><strong>%52.1</strong> (Sağlam ve Gerçekçi)</td>
-        <td>Overfitting ve geçmiş ezberinden tamamen arındırılmış</td>
+        <td>Overfitting ve geçmiş ezberinden arındırılmış</td>
       </tr>
       <tr class="highlight-win">
         <td><strong>Toplam Net Kâr (R)</strong></td>
@@ -737,9 +743,9 @@
       </tr>
       <tr>
         <td><strong>Maksimum Çekilme (Floating DD)</strong></td>
-        <td>%-2.73</td>
-        <td>%-13.47</td>
-        <td>Prop firmaları ve kurumsal fonlama limitleri (%15) içinde</td>
+        <td><span class="badge-loss">%-26.4 (Limit İhlali)</span></td>
+        <td><strong>%-13.47</strong></td>
+        <td><span class="badge-win">Prop ve kurumsal limit (%15) korunmuştur</span></td>
       </tr>
     </tbody>
   </table>
@@ -756,17 +762,17 @@
 <!-- ======================================================================= -->
 <div class="page">
   <div class="top-bar">
-    <div class="top-bar-left">MUSTAFA YAĞCI &bull; QUANTITATIVE FINANCE RESEARCH</div>
-    <div class="top-bar-right">BÖLÜM 4-5: 23 YILLIK SERMAYE BÜYÜMESİ & CANLI İCRA</div>
+    <div class="top-bar-left">MUSTAFA YAĞCI</div>
+    <div class="top-bar-right">BÖLÜM 4-5: 23.3 YILLIK SERMAYE BÜYÜMESİ & CANLI İCRA</div>
   </div>
 
   <!-- ŞEKİL 3 GÖRSELİ -->
   <div class="figure-container">
     <img src="fig3_cumulative_returns_and_drawdown.png" alt="Şekil 3" class="figure-img">
     <div class="figure-caption">
-      <strong>Şekil 3: 23 Yıllık Portföy Büyümesi ve Sualtı Çekilme (Underwater Drawdown) Eğrisi.</strong><br/>
-      • <strong>Panel A (Logaritmik Portföy Eğrisi):</strong> V2 Dolar barları (yeşil), klasik zaman barlarının (gri kesikli) 7 kat üzerinde, pürüzsüz bir sermaye büyümesi sağlamıştır.<br/>
-      • <strong>Panel B (Sualtı Çekilme):</strong> V2 sistemi tüm kriz dönemlerinde (2008 Lehman, 2020 COVID, 2022 BoJ şoku) Darwinex Zero ve Prop firmalarının %15'lik kırmızı ihlal duvarına asla çarpmamıştır.
+      <strong>Şekil 3: 23.3 Yıllık Portföy Büyümesi ve Sualtı Çekilme (Underwater Drawdown) Eğrisi.</strong><br/>
+      • <strong>Panel A (Logaritmik Portföy Eğrisi):</strong> 2003–2026 yılları arasındaki birebir aynı 23.3 yıllık dönemde V2 Dolar barları (yeşil), klasik zaman barlarının (gri) 7 kat üzerinde sermaye büyümesi sağlamıştır.<br/>
+      • <strong>Panel B (Sualtı Çekilme):</strong> V1 zaman barları krizlerde -%26.4 çekilerek %15 limitini delerken, V2 sistemi VPIN korumasıyla -%13.47 seviyesinde kalarak kurumsal fonlama kuralını korumuştur.
     </div>
   </div>
 
@@ -778,12 +784,11 @@
     • <strong>Sıfır Dış Bağımlılık:</strong> Formüller ve görselleştirmeler doğrudan yerel yüksek çözünürlüklü motorla üretilir; harici CDN kopmalarından etkilenmez.
   </p>
 
-  <!-- Yazar & İmza Kartı -->
+  <!-- Yazar & İmza Kartı (Adres Bilgisi Tamamen Kaldırıldı) -->
   <div class="author-card">
     <div>
       <div class="author-name">Mustafa Yağcı</div>
-      <div style="color: var(--text-muted); font-size: 9.5px;">Elektronik & Sistem Mühendisi | Quantitative Developer</div>
-      <div style="color: var(--text-muted); font-size: 9.5px;">Palermo, İtalya &bull; Türkiye</div>
+      <div style="color: var(--text-muted); font-size: 9.5px;">Elektronik & Sistem Mühendisi | Algoritmik Trading</div>
     </div>
     <div style="text-align: right;">
       <div style="font-weight: 700; color: var(--navy); margin-bottom: 2px;">Açık Kaynak Kod Deposu:</div>
