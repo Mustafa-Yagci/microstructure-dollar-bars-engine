@@ -129,7 +129,7 @@
     /* Meta Grid */
     .meta-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 8px;
       background: var(--section-bg);
       border: 1px solid var(--border);
@@ -370,15 +370,11 @@
       <div class="meta-value">Mustafa Yağcı</div>
     </div>
     <div class="meta-item">
-      <div class="meta-label">Uzmanlık Alanı</div>
-      <div class="meta-value">Elektronik & Quant Finans</div>
-    </div>
-    <div class="meta-item">
       <div class="meta-label">Açık Kaynak Kod Deposu</div>
-      <div class="meta-value">github.com/Mustafa-Yagci</div>
+      <div class="meta-value">github.com/Mustafa-Yagci/microstructure-dollar-bars-engine</div>
     </div>
     <div class="meta-item">
-      <div class="meta-label">Doğrulama Bataryası</div>
+      <div class="meta-label">Doğrulama Durumu</div>
       <div class="meta-value" style="color: var(--emerald);">14/14 Pytest (%100 Başarı)</div>
     </div>
   </div>
@@ -417,11 +413,11 @@
     <div class="formula-anatomy">
       <div class="variable-tag">
         <div class="var-head"><span class="var-symbol">p_i</span> <span class="var-name">İşlem Fiyatı</span></div>
-        <div class="var-desc">$i$'inci kenedeki (tick) anlık işlem fiyatı</div>
+        <div class="var-desc">i'nci işlemdeki (tick) anlık işlem fiyatı</div>
       </div>
       <div class="variable-tag">
         <div class="var-head"><span class="var-symbol">v_i</span> <span class="var-name">İşlem Hacmi</span></div>
-        <div class="var-desc">$i$'inci kenede el değiştiren lot / kontrat adedi</div>
+        <div class="var-desc">i'nci işlemde (tick) el değiştiren lot hacmi</div>
       </div>
       <div class="variable-tag">
         <div class="var-head"><span class="var-symbol">D</span> <span class="var-name">Dolar Eşiği</span></div>
@@ -570,7 +566,7 @@
     <div class="callout-title">💡 Neden 5 Temel Matematiksel Eşitlik Bir Arada Kullanılır?</div>
     Kantitatif finansta tek bir göstergeye veya formüle dayanarak sistem kurulamaz. Bu beş model, baştan sona birbirini tamamlayan tavizsiz bir boru hattı oluşturur:<br/>
     <strong>1. Dolar Barları:</strong> Ham veriyi zaman gürültüsünden arındırıp bilgi saatiyle eşit hacimli dilimlere böler.<br/>
-    <strong>2. Lee & Ready (1991):</strong> Her kenedeki kurumsal alıcı/satıcı agresyonunu piyasa derinliği olmadan ortaya çıkarır.<br/>
+    <strong>2. Lee & Ready (1991):</strong> Her işlemdeki (tick) kurumsal alıcı/satıcı agresyonunu piyasa derinliği olmadan ortaya çıkarır.<br/>
     <strong>3. VPIN:</strong> Bilgili işlemcilerin asimetrik toksisitesini erken saptayarak likidite çöküşlerinde sistemi korur.<br/>
     <strong>4. Kyle's Lambda:</strong> Gerçek piyasa etki katsayısını hesaplayarak slippage (kayma) maliyetlerini optimize eder.<br/>
     <strong>5. Jarque-Bera:</strong> Elde edilen getirilerin Gauss normal dağılımına yakınlığını matematiksel kesinlikle denetler.
@@ -592,9 +588,9 @@
     <div class="top-bar-right">BÖLÜM 3: İSTATİSTİKSEL KANITLAR</div>
   </div>
 
-  <h2>3. İstatistiksel Kanıtlar: 15.000 HFT Kene Verisi Üzerinde Test Sonuçları</h2>
+  <h2>3. İstatistiksel Kanıtlar: 15.000 Gerçek HFT Tick Verisi Üzerinde Test Sonuçları</h2>
   <p>
-    Geliştirilen motor, 15.000 gerçek kurumsal kene verisi üzerinde çalıştırılmış ve elde edilen dağılımlar bilimsel normallik testlerine tabi tutulmuştur:
+    Geliştirilen motor, 15.000 gerçek kurumsal tick verisi üzerinde çalıştırılmış ve elde edilen dağılımlar bilimsel normallik testlerine tabi tutulmuştur:
   </p>
 
   <table>
@@ -626,7 +622,7 @@
         <td>+90.3%</td>
       </tr>
       <tr>
-        <td>Kene Barları (100 Tick)</td>
+        <td>Tick Barları (100 İşlem)</td>
         <td>150</td>
         <td>-1.872</td>
         <td>3.308</td>
@@ -692,7 +688,7 @@
 
   <h2>4. Finansal Kazanımlar: USDJPY 23.3 Yıllık Backtest Sonuçları (2003–2026 Birebir Karşılaştırma)</h2>
   <p>
-    Dolar barları mimarisi teoride kalmamış; USDJPY kurumsal kene veri setinde <strong>2003–2026 yılları arasındaki birebir aynı 23.3 yıllık dönemde (5,820 işlem günü)</strong> klasik H1 zaman barlarıyla adil ve eşit koşullarda test edilmiştir:
+    Dolar barları mimarisi teoride kalmamış; USDJPY kurumsal tick veri setinde <strong>2003–2026 yılları arasındaki birebir aynı 23.3 yıllık dönemde (5,820 işlem günü)</strong> klasik H1 zaman barlarıyla adil ve eşit koşullarda test edilmiştir:
   </p>
 
   <table>
@@ -779,7 +775,7 @@
   <h2>5. Canlı İcra (MetaTrader 5) ve Açık Kaynak Mimari</h2>
   <p>
     Bu açık kaynaklı kütüphane, sadece bir laboratuvar deneyi değil; canlı alım-satım platformlarına bağlanabilen kurumsal bir icra omurgasıdır:<br/>
-    • <strong>MT5 Gerçek Zamanlı Akümülatör:</strong> Kene verilerini canlı dinleyerek hafızada dolar barlarını anlık biriktirir.<br/>
+    • <strong>MT5 Gerçek Zamanlı Akümülatör:</strong> Canlı tick verilerini milisaniyelik dinleyerek hafızada dolar barlarını anlık biriktirir.<br/>
     • <strong>İnteraktif Web Terminali (<code>docs/index.html</code>):</strong> Herhangi bir tarayıcıda çift tıklanarak çalıştırılabilir ve dinamik şamdanlar incelenebilir.<br/>
     • <strong>Sıfır Dış Bağımlılık:</strong> Formüller ve görselleştirmeler doğrudan yerel yüksek çözünürlüklü motorla üretilir; harici CDN kopmalarından etkilenmez.
   </p>
