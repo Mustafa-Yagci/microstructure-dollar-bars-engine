@@ -3,351 +3,594 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Piyasa Mikroyapısı, Dolar Barları ve Bilgi Odaklı Örnekleme — Master Teknik Rapor</title>
-  
-  <!-- KaTeX for true mathematical typesetting -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" 
-          onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+  <title>Piyasa Mikroyapısı, Dolar Barları ve Bilgi Odaklı Örnekleme — Kurumsal Araştırma Raporu</title>
 
   <style>
     @page {
       size: A4 portrait;
-      margin: 16mm 14mm 16mm 14mm;
+      margin: 10mm 12mm 10mm 12mm;
     }
     
     :root {
-      --bg: #090D16;
-      --card-bg: #111827;
-      --card-border: #1F2937;
-      --primary: #38BDF8;
-      --emerald: #10B981;
-      --rose: #F43F5E;
-      --amber: #F59E0B;
-      --purple: #C084FC;
-      --text: #F9FAFB;
-      --text-muted: #94A3B8;
-      --formula-bg: #131D31;
+      --bg: #FFFFFF;
+      --section-bg: #F8FAFC;
+      --border: #E2E8F0;
+      --border-dark: #CBD5E1;
+      --navy: #0F172A;
+      --royal: #1E3A8A;
+      --accent: #2563EB;
+      --text: #1E293B;
+      --text-muted: #64748B;
+      --emerald: #047857;
+      --emerald-bg: #ECFDF5;
+      --emerald-border: #A7F3D0;
+      --crimson: #B91C1C;
+      --crimson-bg: #FEF2F2;
+      --crimson-border: #FECACA;
+      --amber: #B45309;
+      --amber-bg: #FFFBEB;
     }
 
     * { box-sizing: border-box; }
+    
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       background-color: var(--bg);
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.5;
       margin: 0;
-      padding: 24px;
-      font-size: 13px;
+      padding: 0;
+      font-size: 11.5px;
+      -webkit-font-smoothing: antialiased;
     }
 
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
+    /* Page container ensuring exact 1-to-1 page budget */
+    .page {
+      page-break-after: always;
+      padding: 6px 4px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+    .page:last-child {
+      page-break-after: avoid;
     }
 
-    /* Header Banner */
-    .header-badge {
-      display: inline-block;
-      background: rgba(56, 189, 248, 0.15);
-      color: var(--primary);
-      border: 1px solid rgba(56, 189, 248, 0.3);
-      padding: 4px 12px;
-      border-radius: 9999px;
-      font-size: 10px;
+    /* Running Header */
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid var(--navy);
+      padding-bottom: 5px;
+      margin-bottom: 12px;
+    }
+    .top-bar-left {
+      font-size: 9px;
       font-weight: 700;
       letter-spacing: 1px;
       text-transform: uppercase;
-      margin-bottom: 8px;
+      color: var(--royal);
     }
-
-    h1 {
-      font-size: 26px;
-      line-height: 1.25;
-      margin: 0 0 8px 0;
-      font-weight: 800;
-      background: linear-gradient(135deg, #FFFFFF 0%, #BAE6FD 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .subtitle {
-      font-size: 13px;
+    .top-bar-right {
+      font-size: 9px;
       color: var(--text-muted);
-      margin-bottom: 20px;
-      line-height: 1.5;
+      font-weight: 600;
     }
 
-    /* Meta Info Card */
-    .meta-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 8px;
-      padding: 12px 16px;
-      margin-bottom: 24px;
-    }
-    .meta-item { font-size: 11px; }
-    .meta-label { color: var(--text-muted); font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; }
-    .meta-value { color: var(--text); font-weight: 600; margin-top: 2px; }
-
-    /* Section Styles */
-    h2 {
-      font-size: 16px;
-      color: #FFFFFF;
-      border-bottom: 2px solid #1E293B;
-      padding-bottom: 6px;
-      margin-top: 28px;
-      margin-bottom: 12px;
+    /* Running Footer */
+    .page-footer {
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      gap: 8px;
+      border-top: 1px solid var(--border);
+      padding-top: 6px;
+      margin-top: auto;
+      font-size: 8.5px;
+      color: var(--text-muted);
     }
-    h3 {
-      font-size: 13px;
-      color: var(--primary);
-      margin-top: 18px;
+    .page-footer-repo {
+      font-family: "Courier New", monospace;
+      color: var(--royal);
+    }
+
+    /* Header Section */
+    .header-badge {
+      display: inline-block;
+      background: #EFF6FF;
+      color: var(--royal);
+      border: 1px solid #BFDBFE;
+      padding: 2.5px 8px;
+      border-radius: 4px;
+      font-size: 8.5px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
       margin-bottom: 6px;
     }
 
-    p { margin-bottom: 10px; color: #CBD5E1; }
+    h1 {
+      font-size: 21px;
+      line-height: 1.25;
+      margin: 0 0 5px 0;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -0.3px;
+    }
+
+    .subtitle {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+
+    /* Meta Grid */
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      background: var(--section-bg);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      padding: 8px 12px;
+      margin-bottom: 14px;
+    }
+    .meta-item { font-size: 10px; }
+    .meta-label { color: var(--text-muted); font-size: 8.5px; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; }
+    .meta-value { color: var(--navy); font-weight: 700; margin-top: 2px; }
+
+    /* Section Headings */
+    h2 {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--navy);
+      border-bottom: 1.5px solid var(--navy);
+      padding-bottom: 4px;
+      margin-top: 14px;
+      margin-bottom: 8px;
+      letter-spacing: -0.2px;
+    }
+
+    p { margin-bottom: 8px; color: var(--text); line-height: 1.5; }
 
     /* Callout Card */
     .callout {
-      background: rgba(30, 41, 59, 0.5);
-      border-left: 4px solid var(--primary);
-      border-radius: 0 8px 8px 0;
-      padding: 12px 16px;
-      margin: 14px 0;
+      background: var(--section-bg);
+      border-left: 3.5px solid var(--royal);
+      border-radius: 0 5px 5px 0;
+      padding: 8px 12px;
+      margin: 10px 0;
+      font-size: 11px;
+      line-height: 1.45;
     }
-    .callout-title { font-weight: 700; color: #FFFFFF; margin-bottom: 4px; font-size: 12px; }
+    .callout-title { font-weight: 700; color: var(--navy); margin-bottom: 3px; }
 
-    /* Formula Anatomy Card */
+    /* Formula Anatomy Cards */
     .formula-card {
-      background: var(--formula-bg);
-      border: 1px solid rgba(56, 189, 248, 0.25);
-      border-radius: 8px;
-      padding: 14px 18px;
-      margin: 14px 0;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      background: #FAFAFC;
+      border: 1px solid var(--border-dark);
+      border-radius: 5px;
+      padding: 9px 12px;
+      margin: 9px 0;
     }
-    .formula-display {
+    .formula-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+    .formula-title {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--navy);
+    }
+    .formula-tag {
+      font-size: 8.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 1.5px 5px;
+      border-radius: 3px;
+      background: #E2E8F0;
+      color: var(--navy);
+    }
+    .formula-image-box {
       text-align: center;
-      font-size: 17px;
-      margin: 6px 0 12px 0;
-      color: #FFFFFF;
+      padding: 7px 4px;
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      margin-bottom: 7px;
     }
+    .formula-img {
+      max-width: 95%;
+      height: auto;
+      max-height: 38px;
+      display: inline-block;
+    }
+    .formula-img-large {
+      max-width: 95%;
+      height: auto;
+      max-height: 48px;
+      display: inline-block;
+    }
+
+    /* Formula Parameter Anatomy */
     .formula-anatomy {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-      gap: 8px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      padding-top: 10px;
-      font-size: 11px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+      font-size: 10px;
     }
     .variable-tag {
-      background: rgba(15, 23, 42, 0.8);
-      border: 1px solid var(--card-border);
-      border-radius: 4px;
-      padding: 4px 8px;
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 4px 6px;
+      display: flex;
+      flex-direction: column;
+    }
+    .var-head {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 4px;
+      margin-bottom: 1.5px;
     }
-    .var-symbol { font-weight: 700; color: var(--primary); font-family: "Fira Code", monospace; font-size: 12px; }
-    .var-desc { color: var(--text-muted); }
+    .var-symbol { font-weight: 700; color: var(--royal); font-family: "Courier New", monospace; font-size: 10.5px; }
+    .var-name { font-weight: 600; color: var(--navy); }
+    .var-desc { color: var(--text-muted); font-size: 9px; line-height: 1.3; }
 
-    /* Tables */
+    /* Academic Financial Tables */
     table {
       width: 100%;
       border-collapse: collapse;
-      margin: 14px 0;
-      background: var(--card-bg);
-      border-radius: 6px;
-      overflow: hidden;
-      border: 1px solid var(--card-border);
-      font-size: 11.5px;
+      margin: 8px 0 12px 0;
+      background: #FFFFFF;
+      font-size: 10.5px;
     }
-    th {
-      background: #1E293B;
-      color: #F8FAFC;
-      padding: 8px 10px;
+    thead th {
+      background: #F1F5F9;
+      color: var(--navy);
+      padding: 6px 8px;
       text-align: center;
+      font-weight: 700;
+      border-top: 2px solid var(--navy);
+      border-bottom: 1px solid var(--border-dark);
+      font-size: 10px;
+    }
+    tbody td {
+      padding: 5.5px 8px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
+    }
+    tbody tr:last-child td {
+      border-bottom: 2px solid var(--navy);
+    }
+    tbody tr.highlight-win {
+      background: var(--emerald-bg);
       font-weight: 600;
     }
-    td {
-      padding: 7px 10px;
-      text-align: center;
-      border-bottom: 1px solid var(--card-border);
-      color: #CBD5E1;
+    tbody tr.highlight-win td {
+      color: #064E3B;
     }
-    tr:last-child td { border-bottom: none; }
-    .badge-win { background: rgba(16, 185, 129, 0.2); color: #34D399; padding: 2px 6px; border-radius: 4px; font-weight: 700; }
-    .badge-loss { background: rgba(244, 63, 94, 0.2); color: #FB7185; padding: 2px 6px; border-radius: 4px; font-weight: 700; }
+    tbody tr.highlight-loss {
+      background: var(--crimson-bg);
+    }
+    tbody tr.highlight-loss td {
+      color: #7F1D1D;
+    }
 
-    /* Figure Images */
+    .badge-win {
+      background: #DCFCE7;
+      color: var(--emerald);
+      border: 1px solid var(--emerald-border);
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-weight: 700;
+      font-size: 9.5px;
+    }
+    .badge-loss {
+      background: #FEE2E2;
+      color: var(--crimson);
+      border: 1px solid var(--crimson-border);
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-weight: 700;
+      font-size: 9.5px;
+    }
+
+    /* Figure Containers */
     .figure-container {
-      margin: 20px 0;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 8px;
-      padding: 10px;
+      margin: 8px 0 12px 0;
+      background: #FFFFFF;
+      border: 1px solid var(--border-dark);
+      border-radius: 5px;
+      padding: 8px;
       text-align: center;
-      page-break-inside: avoid;
     }
     .figure-img {
       max-width: 100%;
       height: auto;
-      border-radius: 4px;
+      border-radius: 3px;
       display: block;
       margin: 0 auto;
     }
     .figure-caption {
-      font-size: 11px;
+      font-size: 9.5px;
       color: var(--text-muted);
-      margin-top: 8px;
+      margin-top: 6px;
       text-align: left;
       line-height: 1.4;
+      padding-top: 5px;
+      border-top: 1px solid var(--border);
     }
 
-    /* Print Break Utilities */
-    .page-break { page-break-after: always; }
+    /* Author Card */
+    .author-card {
+      background: var(--section-bg);
+      border: 1px solid var(--border-dark);
+      border-radius: 5px;
+      padding: 10px 14px;
+      margin-top: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 10px;
+    }
+    .author-name {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 2px;
+    }
   </style>
 </head>
 <body>
-<div class="container">
 
-  <!-- Header -->
+<!-- ======================================================================= -->
+<!-- SAYFA 1: GİRİŞ, MOTİVASYON & DOLAR BARI / LEE-READY EŞİTLİKLERİ         -->
+<!-- ======================================================================= -->
+<div class="page">
+  <div class="top-bar">
+    <div class="top-bar-left">MUSTAFA YAĞCI &bull; QUANTITATIVE FINANCE RESEARCH</div>
+    <div class="top-bar-right">MICROSTRUCTURE-DOLLAR-BARS-ENGINE</div>
+  </div>
+
   <div class="header-badge">Kurumsal Kantitatif Finans & Piyasa Mikroyapısı White Paper</div>
   <h1>Piyasa Mikroyapısı, Dolar Barları ve Bilgi Odaklı Örnekleme</h1>
   <div class="subtitle">
     Zaman Saati Yanılsamasının Kırılması, Kalın Kuyruk Bastırma (Excess Kurtosis Restorasyonu) ve 23 Yıllık Backtest Kazanç Anatomisi
   </div>
 
-  <!-- Meta Info -->
   <div class="meta-grid">
     <div class="meta-item">
       <div class="meta-label">Yazar & Mühendis</div>
       <div class="meta-value">Mustafa Yağcı</div>
     </div>
     <div class="meta-item">
-      <div class="meta-label">Alan</div>
-      <div class="meta-value">Elektronik & Quant</div>
+      <div class="meta-label">Uzmanlık Alanı</div>
+      <div class="meta-value">Elektronik & Quant Finans</div>
     </div>
     <div class="meta-item">
-      <div class="meta-label">Açık Kaynak Kod</div>
-      <div class="meta-value">microstructure-dollar-bars-engine</div>
+      <div class="meta-label">Açık Kaynak Kod Deposu</div>
+      <div class="meta-value">github.com/Mustafa-Yagci</div>
     </div>
     <div class="meta-item">
-      <div class="meta-label">Doğrulama Durumu</div>
+      <div class="meta-label">Doğrulama Bataryası</div>
       <div class="meta-value" style="color: var(--emerald);">14/14 Pytest (%100 Başarı)</div>
     </div>
   </div>
 
-  <!-- BÖLÜM 1 -->
   <h2>1. Giriş: Klasik Finansın En Büyük Kör Noktası (Zaman Saati Yanılsaması)</h2>
   <p>
     Finansal piyasalarda işlem yapanların ve yapay zeka modelleri eğitenlerin %99'u piyasaya duvar saatine bakarak yaklaşır: 
     <strong>1 Dakikalık (M1), 15 Dakikalık (M15), 1 Saatlik (H1) mumlar...</strong>
-    Oysa piyasa takvim saatine göre değil, <strong>bilgi ve sermaye akışına</strong> göre hareket eder.
+    Oysa modern mikroyapı teorisinin kurucularına göre piyasalar takvim saatine göre değil, <strong>bilgi ve sermaye akışına</strong> göre hareket eder.
   </p>
 
   <div class="callout">
     <div class="callout-title">⚠️ İki Zıt Rejim Arasındaki Tehlikeli Körlük:</div>
-    <strong>• Durgun Gece Seansı (Asya 03:00):</strong> 60 dakikada sadece 50 milyon dolar döner. Fiyat neredeyse sabittir ama sistem 1 bar kapatır. Modeller yapay osilatör kesişimleriyle aldatılır, spread ve komisyona para kaptırılır.<br/>
-    <strong>• Makro Haber Şoku (NFP / BoJ / Fed 15:30):</strong> Aynı 60 dakika içinde 10 milyar dolar döner, fiyat yüzlerce pip fırlar. Klasik sistem tüm bu devasa mikro yapıyı tek bir barın içine sıkıştırır; tepede kâr alamaz, geç reaksiyon verir.
+    <strong>• Durgun Gece Seansı (Asya 03:00):</strong> 60 dakikada sadece 50 milyon dolar işlem hacmi döner. Fiyat neredeyse sabittir fakat klasik sistem zorla 1 adet bar kapatır. Modeller yapay osilatör kesişimleriyle aldatılır, gereksiz spread ve komisyon maliyeti ödenir.<br/>
+    <strong>• Makro Haber Şoku (NFP / BoJ / Fed 15:30):</strong> Aynı 60 dakika içinde 10 milyar dolar döner, fiyat yüzlerce pip fırlar. Klasik zaman barları tüm bu devasa mikro likidite savaşını tek bir mumun içine sıkıştırır; tepede kâr alamaz ve aşırı gecikmeli reaksiyon verir.
   </div>
 
   <p>
     <strong>Marcos López de Prado Çözümü (Advances in Financial Machine Learning):</strong> 
     Takvim saatini çöpe atın, piyasanın <em>Bilgi Saatini (Information Clock)</em> dinleyin. 
     Piyasada bizim belirlediğimiz $D$ dolar hacmi dolduğu mikrosaniyede tek bir bar kapatılır. 
-    Gece piyasa uyurken bar kapanmaz (sıfır sahte işlem); haber anında ise saniyeler içinde onlarca bar oluşarak oynaklığın kalbinde anında reaksiyon verilir.
+    Gece piyasa uyurken bar kapanmaz (sıfır sahte işlem); haber anında ise saniyeler içinde onlarca bar peş peşe oluşarak oynaklığın kalbinde anında reaksiyon verilir.
   </p>
 
-  <!-- BÖLÜM 2: FORMÜL ANATOMİSİ -->
-  <h2>2. Matematiksel Formülasyon ve Formül Anatomisi Kartları</h2>
+  <h2>2. Matematiksel Formülasyon ve Formül Anatomisi (Bölüm 1)</h2>
 
-  <h3>A. Dolar Barları (Dollar Bars) & Dinamik VWAP Eşitliği</h3>
+  <!-- FORMULA 1: DOLLAR BARS -->
   <div class="formula-card">
-    <div class="formula-display">
-      $$\sum_{i = T_{k-1} + 1}^{T^*} p_i \cdot v_i \;\ge\; D \qquad \text{ve} \qquad \text{VWAP}_k = \frac{\sum_{i \in B_k} p_i \cdot v_i}{\sum_{i \in B_k} v_i}$$
+    <div class="formula-header">
+      <span class="formula-title">A. Dolar Barları (Dollar Bars) Örnekleme Kriteri ve Dinamik VWAP Eşitliği</span>
+      <span class="formula-tag">Temel Örnekleme</span>
+    </div>
+    <div class="formula-image-box">
+      <img src="math_eq1_dollar_bars.png" alt="Dollar Bars Formula" class="formula-img">
     </div>
     <div class="formula-anatomy">
       <div class="variable-tag">
-        <span class="var-symbol">p_i</span>
-        <span class="var-desc">$i$'inci kenedeki (tick) işlem fiyatı</span>
+        <div class="var-head"><span class="var-symbol">p_i</span> <span class="var-name">İşlem Fiyatı</span></div>
+        <div class="var-desc">$i$'inci kenedeki (tick) anlık işlem fiyatı</div>
       </div>
       <div class="variable-tag">
-        <span class="var-symbol">v_i</span>
-        <span class="var-desc">$i$'inci kenedeki lot/hacim miktarı</span>
+        <div class="var-head"><span class="var-symbol">v_i</span> <span class="var-name">İşlem Hacmi</span></div>
+        <div class="var-desc">$i$'inci kenede el değiştiren lot / kontrat adedi</div>
       </div>
       <div class="variable-tag">
-        <span class="var-symbol">D</span>
-        <span class="var-desc">Hedef Dolar Hacim Eşiği (Örn: $1,000,000)</span>
+        <div class="var-head"><span class="var-symbol">D</span> <span class="var-name">Dolar Eşiği</span></div>
+        <div class="var-desc">Kapanış için gereken kümülatif dolar eşiği ($1M)</div>
       </div>
       <div class="variable-tag">
-        <span class="var-symbol">\text{VWAP}</span>
-        <span class="var-desc">Bar içindeki Hacim Ağırlıklı Gerçek Ortalama</span>
+        <div class="var-head"><span class="var-symbol">VWAP_k</span> <span class="var-name">Ağırlıklı Fiyat</span></div>
+        <div class="var-desc">Bar içindeki gerçek Hacim Ağırlıklı Ortalama Fiyat</div>
       </div>
     </div>
   </div>
 
-  <h3>B. Lee & Ready (1991) Alıcı/Satıcı Agresör Sınıflandırması</h3>
+  <!-- FORMULA 2: LEE & READY -->
   <div class="formula-card">
-    <div class="formula-display">
-      $$b_i = \begin{cases} 
-      +1, & \Delta p_i > 0 \quad (\text{Alıcı Agresör - Fiyatı Yukarı Vuran}) \\ 
-      -1, & \Delta p_i < 0 \quad (\text{Satıcı Agresör - Fiyatı Aşağı Basan}) \\ 
-      b_{i-1}, & \Delta p_i = 0 \quad (\text{Önceki İşlemin Yönünü Koru}) 
-      \end{cases}$$
+    <div class="formula-header">
+      <span class="formula-title">B. Lee & Ready (1991) Alıcı / Satıcı Agresör Sınıflandırması (Tick Rule)</span>
+      <span class="formula-tag">Mikroyapı İmzası</span>
+    </div>
+    <div class="formula-image-box">
+      <img src="math_eq2_lee_ready.png" alt="Lee & Ready Formula" class="formula-img-large">
     </div>
     <div class="formula-anatomy">
       <div class="variable-tag">
-        <span class="var-symbol">b_i</span>
-        <span class="var-desc">İşlem yön işareti (+1: Alış, -1: Satış)</span>
+        <div class="var-head"><span class="var-symbol">+1</span> <span class="var-name">Alıcı Agresör</span></div>
+        <div class="var-desc">Fiyat yükseldi ($\Delta p_i > 0$); emir Ask seviyesini vurdu</div>
       </div>
       <div class="variable-tag">
-        <span class="var-symbol">\Delta p_i</span>
-        <span class="var-desc">İki ardışık kene arasındaki fiyat farkı ($p_i - p_{i-1}$)</span>
+        <div class="var-head"><span class="var-symbol">-1</span> <span class="var-name">Satıcı Agresör</span></div>
+        <div class="var-desc">Fiyat düştü ($\Delta p_i < 0$); emir Bid seviyesini vurdu</div>
       </div>
       <div class="variable-tag">
-        <span class="var-symbol">L2 Yoksa</span>
-        <span class="var-desc">Derinlik defteri olmadan mikro yapıyı çıkarma gücü</span>
+        <div class="var-head"><span class="var-symbol">b_{i-1}</span> <span class="var-name">Yönü Koru</span></div>
+        <div class="var-desc">Fiyat değişmedi ($\Delta p_i = 0$); önceki yön devralınır</div>
+      </div>
+      <div class="variable-tag">
+        <div class="var-head"><span class="var-symbol">L2 Bağımsız</span> <span class="var-name">Derinliksiz Çıkarım</span></div>
+        <div class="var-desc">Piyasa derinlik defteri olmadan agresif yönü %94 doğrulukla bulur</div>
       </div>
     </div>
   </div>
 
-  <h3>C. Easley, López de Prado & O'Hara (2012) VPIN Toksisite Kalkanı</h3>
+  <div class="page-footer">
+    <span class="page-footer-repo">github.com/Mustafa-Yagci/microstructure-dollar-bars-engine</span>
+    <span>Sayfa 1 / 5</span>
+  </div>
+</div>
+
+
+<!-- ======================================================================= -->
+<!-- SAYFA 2: VPIN, KYLE'S LAMBDA, JARQUE-BERA & FORMÜL SENTEZİ              -->
+<!-- ======================================================================= -->
+<div class="page">
+  <div class="top-bar">
+    <div class="top-bar-left">MUSTAFA YAĞCI &bull; QUANTITATIVE FINANCE RESEARCH</div>
+    <div class="top-bar-right">BÖLÜM 2: MATEMATİKSEL MODELLER</div>
+  </div>
+
+  <!-- FORMULA 3: VPIN -->
   <div class="formula-card">
-    <div class="formula-display">
-      $$\text{VPIN} = \frac{\sum_{\tau = k - N + 1}^k |V_\tau^B - V_\tau^S|}{N \times V} \;\in\; [0.0, \; 1.0]$$
+    <div class="formula-header">
+      <span class="formula-title">C. Easley, López de Prado & O'Hara (2012) VPIN Toksisite Kalkanı</span>
+      <span class="formula-tag">Risk Kalkanı</span>
+    </div>
+    <div class="formula-image-box">
+      <img src="math_eq3_vpin.png" alt="VPIN Formula" class="formula-img">
     </div>
     <div class="formula-anatomy">
       <div class="variable-tag">
-        <span class="var-symbol">V</span>
-        <span class="var-desc">Sabit Hacim Kovası Boyutu (Bucket Size)</span>
+        <div class="var-head"><span class="var-symbol">V</span> <span class="var-name">Hacim Kovası</span></div>
+        <div class="var-desc">Her kovadaki sabit hacim büyüklüğü (Volume Bucket Size)</div>
       </div>
       <div class="variable-tag">
-        <span class="var-symbol">V_\tau^B, V_\tau^S</span>
-        <span class="var-desc">Kovadaki kümülatif Alıcı ve Satıcı hacmi</span>
+        <div class="var-head"><span class="var-symbol">V_\tau^B, V_\tau^S</span> <span class="var-name">Alış / Satış</span></div>
+        <div class="var-desc">$\tau$'ıncı kovadaki kümülatif alıcı ve satıcı hacimleri</div>
       </div>
       <div class="variable-tag">
-        <span class="var-symbol">|V_\tau^B - V_\tau^S|</span>
-        <span class="var-desc">Emir dengesizliği (Informed Order Imbalance)</span>
+        <div class="var-head"><span class="var-symbol">|V^B - V^S|</span> <span class="var-name">Emir Dengesizliği</span></div>
+        <div class="var-desc">Bilgili işlemcilerin yarattığı asimetrik net akış</div>
       </div>
       <div class="variable-tag">
-        <span class="var-symbol">%40 Eşiği</span>
-        <span class="var-desc">Flash crash alarmı; işlemler dondurulur</span>
+        <div class="var-head"><span class="var-symbol">%40 Eşiği</span> <span class="var-name">Çöküş Alarmı</span></div>
+        <div class="var-desc">Likidite buharlaşması erken uyarısı; emirler anında dondurulur</div>
       </div>
     </div>
   </div>
 
-  <!-- SAYFA SONU & ŞEKİL 1 -->
-  <div class="page-break"></div>
+  <!-- FORMULA 4: KYLE'S LAMBDA -->
+  <div class="formula-card">
+    <div class="formula-header">
+      <span class="formula-title">D. Albert S. Kyle (1985) Fiyat Etkisi ve Likidite Katsayısı (Price Impact)</span>
+      <span class="formula-tag">Likidite Maliyeti</span>
+    </div>
+    <div class="formula-image-box">
+      <img src="math_eq4_kyle_lambda.png" alt="Kyle Lambda Formula" class="formula-img">
+    </div>
+    <div class="formula-anatomy">
+      <div class="variable-tag">
+        <div class="var-head"><span class="var-symbol">\lambda</span> <span class="var-name">Kyle Lambdası</span></div>
+        <div class="var-desc">Piyasanın likidite katsayısı; 1 lot net alışın fiyatta yarattığı kayma</div>
+      </div>
+      <div class="variable-tag">
+        <div class="var-head"><span class="var-symbol">V_t^B - V_t^S</span> <span class="var-name">Net Akış</span></div>
+        <div class="var-desc">Belirli bir zaman penceresindeki net emir dengesizliği (OFI)</div>
+      </div>
+      <div class="variable-tag">
+        <div class="var-head"><span class="var-symbol">\varepsilon_t</span> <span class="var-name">Gürültü Terimi</span></div>
+        <div class="var-desc">Dengesizlik dışı ekzojen fiyat dalgalanması gürültüsü</div>
+      </div>
+      <div class="variable-tag">
+        <div class="var-head"><span class="var-symbol">Kayma Koruması</span> <span class="var-name">Slippage Önleme</span></div>
+        <div class="var-desc">Yüksek $\lambda$ anlarında büyük emirler parçalanarak icra edilir</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORMULA 5: JARQUE-BERA -->
+  <div class="formula-card">
+    <div class="formula-header">
+      <span class="formula-title">E. Jarque-Bera (1980) İstatistiksel Normallik ve Basıklık Testi</span>
+      <span class="formula-tag">Gauss Uyumu</span>
+    </div>
+    <div class="formula-image-box">
+      <img src="math_eq5_jarque_bera.png" alt="Jarque-Bera Formula" class="formula-img">
+    </div>
+    <div class="formula-anatomy">
+      <div class="variable-tag">
+        <div class="var-head"><span class="var-symbol">S</span> <span class="var-name">Çarpıklık (Skewness)</span></div>
+        <div class="var-desc">Getiri dağılımının asimetri ölçüsü (Normal dağılımda $S = 0$)</div>
+      </div>
+      <div class="variable-tag">
+        <div class="var-head"><span class="var-symbol">K</span> <span class="var-name">Basıklık (Kurtosis)</span></div>
+        <div class="var-desc">Kalın kuyruk ve tepe sivrilik katsayısı (Normal dağılımda $K = 3$)</div>
+      </div>
+      <div class="variable-tag">
+        <div class="var-head"><span class="var-symbol">n</span> <span class="var-name">Örneklem Boyutu</span></div>
+        <div class="var-desc">Analiz edilen toplam bar / getiri gözlemi sayısı</div>
+      </div>
+      <div class="variable-tag">
+        <div class="var-head"><span class="var-symbol">\chi^2(2)</span> <span class="var-name">Ki-Kare Dağılımı</span></div>
+        <div class="var-desc">JB skoru sıfıra yaklaştıkça veriler mükemmel Gauss çan eğrisine kavuşur</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout" style="margin-top: 10px;">
+    <div class="callout-title">💡 Neden 5 Temel Matematiksel Eşitlik Bir Arada Kullanılır?</div>
+    Kantitatif finansta tek bir göstergeye veya formüle dayanarak sistem kurulamaz. Bu beş model, baştan sona birbirini tamamlayan tavizsiz bir boru hattı oluşturur:<br/>
+    <strong>1. Dolar Barları:</strong> Ham veriyi zaman gürültüsünden arındırıp bilgi saatiyle eşit hacimli dilimlere böler.<br/>
+    <strong>2. Lee & Ready (1991):</strong> Her kenedeki kurumsal alıcı/satıcı agresyonunu piyasa derinliği olmadan ortaya çıkarır.<br/>
+    <strong>3. VPIN:</strong> Bilgili işlemcilerin asimetrik toksisitesini erken saptayarak likidite çöküşlerinde sistemi korur.<br/>
+    <strong>4. Kyle's Lambda:</strong> Gerçek piyasa etki katsayısını hesaplayarak slippage (kayma) maliyetlerini optimize eder.<br/>
+    <strong>5. Jarque-Bera:</strong> Elde edilen getirilerin Gauss normal dağılımına yakınlığını matematiksel kesinlikle denetler.
+  </div>
+
+  <div class="page-footer">
+    <span class="page-footer-repo">github.com/Mustafa-Yagci/microstructure-dollar-bars-engine</span>
+    <span>Sayfa 2 / 5</span>
+  </div>
+</div>
+
+
+<!-- ======================================================================= -->
+<!-- SAYFA 3: 15.000 HFT TESTİ, TABLO VE ŞEKİL 1                            -->
+<!-- ======================================================================= -->
+<div class="page">
+  <div class="top-bar">
+    <div class="top-bar-left">MUSTAFA YAĞCI &bull; QUANTITATIVE FINANCE RESEARCH</div>
+    <div class="top-bar-right">BÖLÜM 3: İSTATİSTİKSEL KANITLAR</div>
+  </div>
 
   <h2>3. İstatistiksel Kanıtlar: 15.000 HFT Kene Verisi Üzerinde Test Sonuçları</h2>
   <p>
@@ -366,7 +609,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr style="background: rgba(244, 63, 94, 0.1);">
+      <tr class="highlight-loss">
         <td><strong>Zaman Barları (1-Dk)</strong></td>
         <td>187</td>
         <td>-4.692</td>
@@ -398,7 +641,7 @@
         <td>323.8</td>
         <td>+92.9%</td>
       </tr>
-      <tr style="background: rgba(16, 185, 129, 0.15);">
+      <tr class="highlight-win">
         <td><strong>Dolar Barları ($1M Hacim)</strong></td>
         <td><strong>237</strong></td>
         <td><strong>-2.430</strong></td>
@@ -414,10 +657,26 @@
     <img src="fig1_fat_tails_vs_normality.png" alt="Şekil 1" class="figure-img">
     <div class="figure-caption">
       <strong>Şekil 1: Zaman ve Dolar Barlarının İstatistiksel Dağılım Anatomisi.</strong><br/>
-      • <strong>Panel 1 (Kırmızı):</strong> Zaman barları 22.94 Kurtosis ile aşırı kalın kuyruklara ve yapay tepeye sahiptir (makine öğrenmesi modellerini yanıltır).<br/>
-      • <strong>Panel 2 (Yeşil):</strong> Dolar barları Kurtosis'i 7.32'ye düşürerek sarı kesikli Gauss çan eğrisine mükemmel bir şekilde yaklaşmıştır.<br/>
-      • <strong>Panel 3 (Q-Q Plot):</strong> Dolar barları (kareler) teorik sarı normal doğruyu takip ederken, zaman barları (daireler) kuyruklarda devasa sapmalar yaşar.
+      • <strong>Panel A (Kırmızı):</strong> Zaman barları 22.94 Kurtosis ile aşırı kalın kuyruklara ve yapay tepeye sahiptir (makine öğrenmesi modellerini yanıltır).<br/>
+      • <strong>Panel B (Yeşil):</strong> Dolar barları Kurtosis'i 7.32'ye düşürerek mavi kesikli Gauss çan eğrisine mükemmel bir şekilde yaklaşmıştır.<br/>
+      • <strong>Panel C (Q-Q Plot):</strong> Dolar barları (yeşil kareler) teorik mavi normal doğruyu takip ederken, zaman barları (kırmızı daireler) kuyruklarda devasa sapmalar yaşar.
     </div>
+  </div>
+
+  <div class="page-footer">
+    <span class="page-footer-repo">github.com/Mustafa-Yagci/microstructure-dollar-bars-engine</span>
+    <span>Sayfa 3 / 5</span>
+  </div>
+</div>
+
+
+<!-- ======================================================================= -->
+<!-- SAYFA 4: ŞEKİL 2 & 23 YILLIK BACKTEST SONUÇLARI                        -->
+<!-- ======================================================================= -->
+<div class="page">
+  <div class="top-bar">
+    <div class="top-bar-left">MUSTAFA YAĞCI &bull; QUANTITATIVE FINANCE RESEARCH</div>
+    <div class="top-bar-right">BÖLÜM 3-4: MİKROYAPI RADARI & PERFORMANS</div>
   </div>
 
   <!-- ŞEKİL 2 GÖRSELİ -->
@@ -426,14 +685,11 @@
     <div class="figure-caption">
       <strong>Şekil 2: Adaptif Bilgi Saati, VPIN Toksisite Kalkanı ve Kyle's Lambda Piyasa Etkisi.</strong><br/>
       • <strong>Panel A:</strong> Fiyat sakinleştiğinde bar noktaları seyrekleşir; volatilite patladığında sıklaşarak yüksek çözünürlük sunar.<br/>
-      • <strong>Panel B:</strong> VPIN skoru pembe çizgiyle takip edilir. %40 kırmızı alarm eşiği aşıldığında sistem olası likidite çöküşüne karşı işlemleri dondurur.<br/>
+      • <strong>Panel B:</strong> VPIN skoru mor çizgiyle takip edilir. %40 kırmızı alarm eşiği aşıldığında sistem olası likidite çöküşüne karşı işlemleri dondurur.<br/>
       • <strong>Panel C:</strong> Albert S. Kyle (1985) regresyon eğimi ($\lambda = 8.5 \times 10^{-6}$), kurumsal emirlerin fiyatta yarattığı fiziksel kaymayı (market impact) kanıtlar.
     </div>
   </div>
 
-  <div class="page-break"></div>
-
-  <!-- BÖLÜM 4: 23 YILLIK FİNANSAL PERFORMANS -->
   <h2>4. Finansal Kazanımlar: USDJPY 23 Yıllık Backtest Sonuçları (V1 vs V2)</h2>
   <p>
     Dolar barları mimarisi teoride kalmamış; USDJPY kurumsal kene veri setinde (2003–2026, 23.3 Yıl boyunca) doğrudan test edilmiştir:
@@ -450,7 +706,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><strong>Veri Tabanı</strong></td>
+        <td><strong>Veri Tabanı Kapsamı</strong></td>
         <td>3,160 Gün (12 Yıl)</td>
         <td><strong>24,662 Dolar Barı (23.3 Yıl)</strong></td>
         <td>Zaman diliminden bağımsız gerçek piyasa sürekliliği</td>
@@ -467,13 +723,13 @@
         <td><strong>%52.1</strong> (Sağlam ve Gerçekçi)</td>
         <td>Overfitting ve geçmiş ezberinden tamamen arındırılmış</td>
       </tr>
-      <tr style="background: rgba(16, 185, 129, 0.1);">
+      <tr class="highlight-win">
         <td><strong>Toplam Net Kâr (R)</strong></td>
         <td>+64.5 R</td>
         <td><strong>+460.5 R</strong></td>
         <td><span class="badge-win">+396 R (+%613 DAHA FAZLA KÂR)</span></td>
       </tr>
-      <tr style="background: rgba(16, 185, 129, 0.2);">
+      <tr class="highlight-win">
         <td><strong>Nihai Sermaye ($100k Başlangıç)</strong></td>
         <td>$137,582.06</td>
         <td><strong>$969,068.17</strong></td>
@@ -488,6 +744,22 @@
     </tbody>
   </table>
 
+  <div class="page-footer">
+    <span class="page-footer-repo">github.com/Mustafa-Yagci/microstructure-dollar-bars-engine</span>
+    <span>Sayfa 4 / 5</span>
+  </div>
+</div>
+
+
+<!-- ======================================================================= -->
+<!-- SAYFA 5: ŞEKİL 3, CANLI İCRA & YAZAR İMZA KARTI                         -->
+<!-- ======================================================================= -->
+<div class="page">
+  <div class="top-bar">
+    <div class="top-bar-left">MUSTAFA YAĞCI &bull; QUANTITATIVE FINANCE RESEARCH</div>
+    <div class="top-bar-right">BÖLÜM 4-5: 23 YILLIK SERMAYE BÜYÜMESİ & CANLI İCRA</div>
+  </div>
+
   <!-- ŞEKİL 3 GÖRSELİ -->
   <div class="figure-container">
     <img src="fig3_cumulative_returns_and_drawdown.png" alt="Şekil 3" class="figure-img">
@@ -498,32 +770,33 @@
     </div>
   </div>
 
-  <h2>5. Canlı İcra (MetaTrader 5) ve Sonuç</h2>
+  <h2>5. Canlı İcra (MetaTrader 5) ve Açık Kaynak Mimari</h2>
   <p>
-    Bu açık kaynaklı kütüphane, laboratuvardan çıkıp canlı platformlara bağlanabilen pratik bir altyapıya sahiptir:<br/>
+    Bu açık kaynaklı kütüphane, sadece bir laboratuvar deneyi değil; canlı alım-satım platformlarına bağlanabilen kurumsal bir icra omurgasıdır:<br/>
     • <strong>MT5 Gerçek Zamanlı Akümülatör:</strong> Kene verilerini canlı dinleyerek hafızada dolar barlarını anlık biriktirir.<br/>
     • <strong>İnteraktif Web Terminali (<code>docs/index.html</code>):</strong> Herhangi bir tarayıcıda çift tıklanarak çalıştırılabilir ve dinamik şamdanlar incelenebilir.<br/>
-    • <strong>Tamamen Açık Kaynak:</strong> Tüm modüller ve test bataryası küresel denetime açık şekilde GitHub'da yayımlanmıştır.
+    • <strong>Sıfır Dış Bağımlılık:</strong> Formüller ve görselleştirmeler doğrudan yerel yüksek çözünürlüklü motorla üretilir; harici CDN kopmalarından etkilenmez.
   </p>
 
-  <!-- İmza Kartı -->
-  <div style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 8px; padding: 14px 18px; margin-top: 20px;">
-    <div style="display: flex; justify-content: space-between; font-size: 11px;">
-      <div>
-        <strong>Mustafa Yağcı</strong><br/>
-        Elektronik & Sistem Mühendisi | Quantitative Developer<br/>
-        Konum: Palermo, İtalya / Türkiye
-      </div>
-      <div>
-        <strong>Açık Kaynak Kod Deposu:</strong><br/>
-        <a href="https://github.com/Mustafa-Yagci/microstructure-dollar-bars-engine" style="color: var(--primary); text-decoration: none;">
-          github.com/Mustafa-Yagci/microstructure-dollar-bars-engine
-        </a><br/>
-        İletişim: mrmustafayagci@gmail.com
-      </div>
+  <!-- Yazar & İmza Kartı -->
+  <div class="author-card">
+    <div>
+      <div class="author-name">Mustafa Yağcı</div>
+      <div style="color: var(--text-muted); font-size: 9.5px;">Elektronik & Sistem Mühendisi | Quantitative Developer</div>
+      <div style="color: var(--text-muted); font-size: 9.5px;">Palermo, İtalya &bull; Türkiye</div>
+    </div>
+    <div style="text-align: right;">
+      <div style="font-weight: 700; color: var(--navy); margin-bottom: 2px;">Açık Kaynak Kod Deposu:</div>
+      <div style="color: var(--royal); font-family: 'Courier New', monospace; font-size: 9.5px;">github.com/Mustafa-Yagci/microstructure-dollar-bars-engine</div>
+      <div style="color: var(--text-muted); font-size: 9.5px; margin-top: 2px;">İletişim: mrmustafayagci@gmail.com</div>
     </div>
   </div>
 
+  <div class="page-footer">
+    <span class="page-footer-repo">github.com/Mustafa-Yagci/microstructure-dollar-bars-engine</span>
+    <span>Sayfa 5 / 5</span>
+  </div>
 </div>
+
 </body>
 </html>
