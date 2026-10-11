@@ -390,14 +390,14 @@
 
   <div class="callout">
     <div class="callout-title">⚠️ The Dangerous Blind Spot Between Two Opposite Regimes:</div>
-    <strong>• Quiet Overnight Session (Asia 03:00 GMT):</strong> Only $50 million turns over across 60 minutes. Price is virtually stationary, yet the system forces 60 separate 1-minute bars into memory. Models are deceived by spurious oscillator crossovers, bleeding capital to bid-ask spreads and commissions.<br/>
-    <strong>• Macro Shock Event (NFP / BoJ / FOMC 13:30 GMT):</strong> $10 billion turns over in the exact same 60 minutes, driving explosive multi-pip moves. Conventional systems cram this entire micro-liquidity battleground into a single candle, reacting too late and forfeiting alpha.
+    <strong>• Quiet Overnight Session (Asia 03:00 GMT):</strong> Only 50 million USD turns over across 60 minutes. Price is virtually stationary, yet the system forces 60 separate 1-minute bars into memory. Models are deceived by spurious oscillator crossovers, bleeding capital to bid-ask spreads and commissions.<br/>
+    <strong>• Macro Shock Event (NFP / BoJ / FOMC 13:30 GMT):</strong> 10 billion USD turns over in the exact same 60 minutes, driving explosive multi-pip moves. Conventional systems cram this entire micro-liquidity battleground into a single candle, reacting too late and forfeiting alpha.
   </div>
 
   <p>
     <strong>The Marcos López de Prado Solution (Advances in Financial Machine Learning):</strong> 
     Discard calendar time and align with the market's true <em>Information Clock</em>. 
-    A bar closes at the exact sub-millisecond when a pre-determined dollar volume threshold $D$ has transacted. 
+    A bar closes at the exact sub-millisecond when a pre-determined dollar volume threshold D has transacted. 
     When the market is inactive, zero bars form (eliminating phantom trades); during volatility bursts, dozens of bars form within seconds, capturing true price discovery at ultra-high resolution.
   </p>
 
@@ -415,19 +415,19 @@
     <div class="formula-anatomy">
       <div class="variable-tag">
         <div class="var-head"><span class="var-symbol">p_i</span> <span class="var-name">Execution Price</span></div>
-        <div class="var-desc">Instantaneous execution price at tick $i$</div>
+        <div class="var-desc">Instantaneous execution price at tick i</div>
       </div>
       <div class="variable-tag">
         <div class="var-head"><span class="var-symbol">v_i</span> <span class="var-name">Transacted Volume</span></div>
-        <div class="var-desc">Traded contracts / lots at tick $i$</div>
+        <div class="var-desc">Traded contracts / lots at tick i</div>
       </div>
       <div class="variable-tag">
         <div class="var-head"><span class="var-symbol">D</span> <span class="var-name">Dollar Threshold</span></div>
-        <div class="var-desc">Cumulative dollar volume to close a bar ($1M)</div>
+        <div class="var-desc">Cumulative dollar volume to close a bar (1,000,000 USD)</div>
       </div>
       <div class="variable-tag">
         <div class="var-head"><span class="var-symbol">VWAP_k</span> <span class="var-name">Weighted Price</span></div>
-        <div class="var-desc">True Volume-Weighted Average Price across bar $k$</div>
+        <div class="var-desc">True Volume-Weighted Average Price across bar k</div>
       </div>
     </div>
   </div>
@@ -444,15 +444,15 @@
     <div class="formula-anatomy">
       <div class="variable-tag">
         <div class="var-head"><span class="var-symbol">+1</span> <span class="var-name">Buyer Aggressor</span></div>
-        <div class="var-desc">Uptick ($\Delta p_i > 0$); order hit the prevailing Ask</div>
+        <div class="var-desc">Uptick (Price increase: Δp > 0); order hit the prevailing Ask</div>
       </div>
       <div class="variable-tag">
         <div class="var-head"><span class="var-symbol">-1</span> <span class="var-name">Seller Aggressor</span></div>
-        <div class="var-desc">Downtick ($\Delta p_i < 0$); order hit the prevailing Bid</div>
+        <div class="var-desc">Downtick (Price decrease: Δp < 0); order hit the prevailing Bid</div>
       </div>
       <div class="variable-tag">
-        <div class="var-head"><span class="var-symbol">b_{i-1}</span> <span class="var-name">Preserve Sign</span></div>
-        <div class="var-desc">Zero tick ($\Delta p_i = 0$); inherits preceding trade sign</div>
+        <div class="var-head"><span class="var-symbol">b_{prev}</span> <span class="var-name">Preserve Sign</span></div>
+        <div class="var-desc">Zero tick (Price unchanged: Δp = 0); inherits preceding trade sign</div>
       </div>
       <div class="variable-tag">
         <div class="var-head"><span class="var-symbol">L2-Free</span> <span class="var-name">Depth-Free Sign</span></div>
@@ -492,11 +492,11 @@
         <div class="var-desc">Constant volume size per bucket (Volume Bucket Size)</div>
       </div>
       <div class="variable-tag">
-        <div class="var-head"><span class="var-symbol">V_\tau^B, V_\tau^S</span> <span class="var-name">Buy / Sell Flow</span></div>
-        <div class="var-desc">Cumulative buy and sell volume inside bucket $\tau$</div>
+        <div class="var-head"><span class="var-symbol">V_B, V_S</span> <span class="var-name">Buy / Sell Flow</span></div>
+        <div class="var-desc">Cumulative buy and sell volume inside bucket τ</div>
       </div>
       <div class="variable-tag">
-        <div class="var-head"><span class="var-symbol">|V^B - V^S|</span> <span class="var-name">Order Imbalance</span></div>
+        <div class="var-head"><span class="var-symbol">|V_B - V_S|</span> <span class="var-name">Order Imbalance</span></div>
         <div class="var-desc">Asymmetric net order flow driven by informed traders</div>
       </div>
       <div class="variable-tag">
@@ -517,20 +517,20 @@
     </div>
     <div class="formula-anatomy">
       <div class="variable-tag">
-        <div class="var-head"><span class="var-symbol">\lambda</span> <span class="var-name">Kyle's Lambda</span></div>
+        <div class="var-head"><span class="var-symbol">Lambda (λ)</span> <span class="var-name">Kyle's Lambda</span></div>
         <div class="var-desc">Market liquidity coefficient: price shift per unit order flow</div>
       </div>
       <div class="variable-tag">
-        <div class="var-head"><span class="var-symbol">V_t^B - V_t^S</span> <span class="var-name">Net Flow (OFI)</span></div>
+        <div class="var-head"><span class="var-symbol">V_B - V_S</span> <span class="var-name">Net Flow (OFI)</span></div>
         <div class="var-desc">Net order flow imbalance across rolling sampling window</div>
       </div>
       <div class="variable-tag">
-        <div class="var-head"><span class="var-symbol">\varepsilon_t</span> <span class="var-name">Noise Component</span></div>
+        <div class="var-head"><span class="var-symbol">Epsilon (ε)</span> <span class="var-name">Noise Component</span></div>
         <div class="var-desc">Exogenous price volatility uncorrelated with order imbalance</div>
       </div>
       <div class="variable-tag">
         <div class="var-head"><span class="var-symbol">Slippage Guard</span> <span class="var-name">Execution Cost</span></div>
-        <div class="var-desc">Slices large institutional orders into micro-blocks when $\lambda$ rises</div>
+        <div class="var-desc">Slices large institutional orders into micro-blocks when Lambda (λ) rises</div>
       </div>
     </div>
   </div>
@@ -547,19 +547,19 @@
     <div class="formula-anatomy">
       <div class="variable-tag">
         <div class="var-head"><span class="var-symbol">S</span> <span class="var-name">Skewness</span></div>
-        <div class="var-desc">Asymmetry measure of returns ($S = 0$ under Gaussian normality)</div>
+        <div class="var-desc">Asymmetry measure of returns (S = 0 under Gaussian normality)</div>
       </div>
       <div class="variable-tag">
         <div class="var-head"><span class="var-symbol">K</span> <span class="var-name">Kurtosis</span></div>
-        <div class="var-desc">Tail fatness & peakedness ($K = 3$ under Gaussian normality)</div>
+        <div class="var-desc">Tail fatness & peakedness (K = 3 under Gaussian normality)</div>
       </div>
       <div class="variable-tag">
         <div class="var-head"><span class="var-symbol">n</span> <span class="var-name">Sample Size</span></div>
         <div class="var-desc">Total count of observed bar return realizations</div>
       </div>
       <div class="variable-tag">
-        <div class="var-head"><span class="var-symbol">\chi^2(2)</span> <span class="var-name">Chi-Square Limit</span></div>
-        <div class="var-desc">As $JB \to 0$, sampled returns converge toward IID Gaussian properties</div>
+        <div class="var-head"><span class="var-symbol">χ²(2)</span> <span class="var-name">Chi-Square Limit</span></div>
+        <div class="var-desc">As JB score approaches zero, sampled returns converge toward IID Gaussian properties</div>
       </div>
     </div>
   </div>
@@ -640,7 +640,7 @@
         <td>+92.9%</td>
       </tr>
       <tr class="highlight-win">
-        <td><strong>Dollar Bars ($1M Volume)</strong></td>
+        <td><strong>Dollar Bars (1,000,000 USD Threshold)</strong></td>
         <td><strong>237</strong></td>
         <td><strong>-2.430</strong></td>
         <td><span class="badge-win">7.322 (Suppressed)</span></td>
@@ -712,7 +712,7 @@
       <tr>
         <td><strong>Sample / Bar Count</strong></td>
         <td>~140,000 Hourly Bars</td>
-        <td><strong>24,662 Dollar Bars ($1M Volume)</strong></td>
+        <td><strong>24,662 Dollar Bars (1,000,000 USD Threshold)</strong></td>
         <td>Free of inactive night bars and spurious noise</td>
       </tr>
       <tr>
@@ -734,9 +734,9 @@
         <td><span class="badge-win">+396 R (+613% HIGHER NET RETURN)</span></td>
       </tr>
       <tr class="highlight-win">
-        <td><strong>Terminal Capital ($100k Initial)</strong></td>
-        <td>$137,582.06</td>
-        <td><strong>$969,068.17</strong></td>
+        <td><strong>Terminal Capital (100,000 USD Initial)</strong></td>
+        <td>137,582.06 USD</td>
+        <td><strong>969,068.17 USD</strong></td>
         <td><span class="badge-win">7X HIGHER COMPOUND WEALTH ACCELERATION</span></td>
       </tr>
       <tr>
@@ -786,7 +786,6 @@
   <div class="author-card">
     <div>
       <div class="author-name">Mustafa Yağcı</div>
-      <div style="color: var(--text-muted); font-size: 9.5px;">Systems Engineer | Algorithmic Trading Developer</div>
     </div>
     <div style="text-align: right;">
       <div style="font-weight: 700; color: var(--navy); margin-bottom: 2px;">Open-Source Codebase:</div>

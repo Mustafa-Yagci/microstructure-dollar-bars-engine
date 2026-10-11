@@ -395,7 +395,7 @@
   <p>
     <strong>Marcos López de Prado Çözümü (Advances in Financial Machine Learning):</strong> 
     Takvim saatini çöpe atın, piyasanın <em>Bilgi Saatini (Information Clock)</em> dinleyin. 
-    Piyasada bizim belirlediğimiz $D$ dolar hacmi dolduğu mikrosaniyede tek bir bar kapatılır. 
+    Piyasada bizim belirlediğimiz D dolar hacim eşiği dolduğu mikrosaniyede tek bir bar kapatılır. 
     Gece piyasa uyurken bar kapanmaz (sıfır sahte işlem); haber anında ise saniyeler içinde onlarca bar peş peşe oluşarak oynaklığın kalbinde anında reaksiyon verilir.
   </p>
 
@@ -421,7 +421,7 @@
       </div>
       <div class="variable-tag">
         <div class="var-head"><span class="var-symbol">D</span> <span class="var-name">Dolar Eşiği</span></div>
-        <div class="var-desc">Kapanış için gereken kümülatif dolar eşiği ($1M)</div>
+        <div class="var-desc">Kapanış için gereken kümülatif dolar eşiği (1 Milyon USD)</div>
       </div>
       <div class="variable-tag">
         <div class="var-head"><span class="var-symbol">VWAP_k</span> <span class="var-name">Ağırlıklı Fiyat</span></div>
@@ -442,15 +442,15 @@
     <div class="formula-anatomy">
       <div class="variable-tag">
         <div class="var-head"><span class="var-symbol">+1</span> <span class="var-name">Alıcı Agresör</span></div>
-        <div class="var-desc">Fiyat yükseldi ($\Delta p_i > 0$); emir Ask seviyesini vurdu</div>
+        <div class="var-desc">Fiyat yükseldi (Fiyat artışı: Δp > 0); emir Ask seviyesini vurdu</div>
       </div>
       <div class="variable-tag">
         <div class="var-head"><span class="var-symbol">-1</span> <span class="var-name">Satıcı Agresör</span></div>
-        <div class="var-desc">Fiyat düştü ($\Delta p_i < 0$); emir Bid seviyesini vurdu</div>
+        <div class="var-desc">Fiyat düştü (Fiyat düşüşü: Δp < 0); emir Bid seviyesini vurdu</div>
       </div>
       <div class="variable-tag">
-        <div class="var-head"><span class="var-symbol">b_{i-1}</span> <span class="var-name">Yönü Koru</span></div>
-        <div class="var-desc">Fiyat değişmedi ($\Delta p_i = 0$); önceki yön devralınır</div>
+        <div class="var-head"><span class="var-symbol">b_{önceki}</span> <span class="var-name">Yönü Koru</span></div>
+        <div class="var-desc">Fiyat değişmedi (Fiyat sabit: Δp = 0); önceki yön devralınır</div>
       </div>
       <div class="variable-tag">
         <div class="var-head"><span class="var-symbol">L2 Bağımsız</span> <span class="var-name">Derinliksiz Çıkarım</span></div>
@@ -490,11 +490,11 @@
         <div class="var-desc">Her kovadaki sabit hacim büyüklüğü (Volume Bucket Size)</div>
       </div>
       <div class="variable-tag">
-        <div class="var-head"><span class="var-symbol">V_\tau^B, V_\tau^S</span> <span class="var-name">Alış / Satış</span></div>
-        <div class="var-desc">$\tau$'ıncı kovadaki kümülatif alıcı ve satıcı hacimleri</div>
+        <div class="var-head"><span class="var-symbol">V_B, V_S</span> <span class="var-name">Alış / Satış</span></div>
+        <div class="var-desc">İlgili (τ) kova içindeki kümülatif alıcı ve satıcı hacimleri</div>
       </div>
       <div class="variable-tag">
-        <div class="var-head"><span class="var-symbol">|V^B - V^S|</span> <span class="var-name">Emir Dengesizliği</span></div>
+        <div class="var-head"><span class="var-symbol">|V_B - V_S|</span> <span class="var-name">Emir Dengesizliği</span></div>
         <div class="var-desc">Bilgili işlemcilerin yarattığı asimetrik net akış</div>
       </div>
       <div class="variable-tag">
@@ -515,20 +515,20 @@
     </div>
     <div class="formula-anatomy">
       <div class="variable-tag">
-        <div class="var-head"><span class="var-symbol">\lambda</span> <span class="var-name">Kyle Lambdası</span></div>
+        <div class="var-head"><span class="var-symbol">Lambda (λ)</span> <span class="var-name">Kyle Lambdası</span></div>
         <div class="var-desc">Piyasanın likidite katsayısı; 1 lot net alışın fiyatta yarattığı kayma</div>
       </div>
       <div class="variable-tag">
-        <div class="var-head"><span class="var-symbol">V_t^B - V_t^S</span> <span class="var-name">Net Akış</span></div>
+        <div class="var-head"><span class="var-symbol">V_B - V_S</span> <span class="var-name">Net Akış</span></div>
         <div class="var-desc">Belirli bir zaman penceresindeki net emir dengesizliği (OFI)</div>
       </div>
       <div class="variable-tag">
-        <div class="var-head"><span class="var-symbol">\varepsilon_t</span> <span class="var-name">Gürültü Terimi</span></div>
+        <div class="var-head"><span class="var-symbol">Epsilon (ε)</span> <span class="var-name">Gürültü Terimi</span></div>
         <div class="var-desc">Dengesizlik dışı ekzojen fiyat dalgalanması gürültüsü</div>
       </div>
       <div class="variable-tag">
         <div class="var-head"><span class="var-symbol">Kayma Koruması</span> <span class="var-name">Slippage Önleme</span></div>
-        <div class="var-desc">Yüksek $\lambda$ anlarında büyük emirler parçalanarak icra edilir</div>
+        <div class="var-desc">Yüksek Lambda (λ) anlarında büyük emirler parçalanarak icra edilir</div>
       </div>
     </div>
   </div>
@@ -545,18 +545,18 @@
     <div class="formula-anatomy">
       <div class="variable-tag">
         <div class="var-head"><span class="var-symbol">S</span> <span class="var-name">Çarpıklık (Skewness)</span></div>
-        <div class="var-desc">Getiri dağılımının asimetri ölçüsü (Normal dağılımda $S = 0$)</div>
+        <div class="var-desc">Getiri dağılımının asimetri ölçüsü (Normal dağılımda S = 0)</div>
       </div>
       <div class="variable-tag">
         <div class="var-head"><span class="var-symbol">K</span> <span class="var-name">Basıklık (Kurtosis)</span></div>
-        <div class="var-desc">Kalın kuyruk ve tepe sivrilik katsayısı (Normal dağılımda $K = 3$)</div>
+        <div class="var-desc">Kalın kuyruk ve tepe sivrilik katsayısı (Normal dağılımda K = 3)</div>
       </div>
       <div class="variable-tag">
         <div class="var-head"><span class="var-symbol">n</span> <span class="var-name">Örneklem Boyutu</span></div>
         <div class="var-desc">Analiz edilen toplam bar / getiri gözlemi sayısı</div>
       </div>
       <div class="variable-tag">
-        <div class="var-head"><span class="var-symbol">\chi^2(2)</span> <span class="var-name">Ki-Kare Dağılımı</span></div>
+        <div class="var-head"><span class="var-symbol">χ²(2)</span> <span class="var-name">Ki-Kare Dağılımı</span></div>
         <div class="var-desc">JB skoru sıfıra yaklaştıkça veriler mükemmel Gauss çan eğrisine kavuşur</div>
       </div>
     </div>
@@ -638,7 +638,7 @@
         <td>+92.9%</td>
       </tr>
       <tr class="highlight-win">
-        <td><strong>Dolar Barları ($1M Hacim)</strong></td>
+        <td><strong>Dolar Barları (1,000,000 USD Eşik)</strong></td>
         <td><strong>237</strong></td>
         <td><strong>-2.430</strong></td>
         <td><span class="badge-win">7.322 (Baskılandı)</span></td>
@@ -710,7 +710,7 @@
       <tr>
         <td><strong>Örneklem / Bar Sayısı</strong></td>
         <td>~140,000 Saatlik Bar</td>
-        <td><strong>24,662 Dolar Barı ($1M Hacim)</strong></td>
+        <td><strong>24,662 Dolar Barı (1,000,000 USD Eşik)</strong></td>
         <td>Gereksiz gece barlarından tamamen arındırılmış</td>
       </tr>
       <tr>
@@ -732,9 +732,9 @@
         <td><span class="badge-win">+396 R (+%613 DAHA FAZLA KÂR)</span></td>
       </tr>
       <tr class="highlight-win">
-        <td><strong>Nihai Sermaye ($100k Başlangıç)</strong></td>
-        <td>$137,582.06</td>
-        <td><strong>$969,068.17</strong></td>
+        <td><strong>Nihai Sermaye (100,000 USD Başlangıç)</strong></td>
+        <td>137,582.06 USD</td>
+        <td><strong>969,068.17 USD</strong></td>
         <td><span class="badge-win">7 KAT DAHA YÜKSEK BİLEŞİK SERMAYE</span></td>
       </tr>
       <tr>
