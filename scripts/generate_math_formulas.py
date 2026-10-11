@@ -22,7 +22,7 @@ fig1.savefig(docs_dir / "math_eq1_dollar_bars.png", bbox_inches="tight", transpa
 plt.close(fig1)
 print("Generated: math_eq1_dollar_bars.png")
 
-# 2. LEE & READY (1991) TICK RULE
+# 2. LEE & READY (1991) TICK RULE (TR)
 fig2, ax2 = plt.subplots(figsize=(9, 1.8), dpi=300)
 fig2.patch.set_alpha(0.0)
 ax2.axis("off")
@@ -36,6 +36,21 @@ ax2.text(2.3, 2.5, r"$b_{i-1}, \; \Delta p_i = 0 \quad (\mathrm{Yon \: Degismedi
 fig2.savefig(docs_dir / "math_eq2_lee_ready.png", bbox_inches="tight", transparent=True, pad_inches=0.1)
 plt.close(fig2)
 print("Generated: math_eq2_lee_ready.png")
+
+# 2. LEE & READY (1991) TICK RULE (EN)
+fig2_en, ax2_en = plt.subplots(figsize=(9, 1.8), dpi=300)
+fig2_en.patch.set_alpha(0.0)
+ax2_en.axis("off")
+ax2_en.set_xlim(0, 10)
+ax2_en.set_ylim(0, 10)
+ax2_en.text(0.5, 5, r"$b_i = $", fontsize=22, color="#0F172A", va="center")
+ax2_en.text(1.7, 5, "{", fontsize=48, color="#0F172A", va="center", fontfamily="serif")
+ax2_en.text(2.3, 7.5, r"$+1, \quad \Delta p_i > 0 \quad (\mathrm{Buyer \: Aggressor \: / \: Lift \: Ask})$", fontsize=13.5, color="#047857", va="center")
+ax2_en.text(2.3, 5.0, r"$-1, \quad \Delta p_i < 0 \quad (\mathrm{Seller \: Aggressor \: / \: Hit \: Bid})$", fontsize=13.5, color="#DC2626", va="center")
+ax2_en.text(2.3, 2.5, r"$b_{i-1}, \; \Delta p_i = 0 \quad (\mathrm{Zero \: Tick \: / \: Carry \: Prior \: Sign})$", fontsize=13.5, color="#475569", va="center")
+fig2_en.savefig(docs_dir / "math_eq2_lee_ready_en.png", bbox_inches="tight", transparent=True, pad_inches=0.1)
+plt.close(fig2_en)
+print("Generated: math_eq2_lee_ready_en.png")
 
 # 3. EASLEY, LOPEZ DE PRADO & O'HARA (2012) VPIN
 fig3 = plt.figure(figsize=(9, 1.2), dpi=300)
