@@ -541,7 +541,7 @@ def create_whitepaper():
     sig_content = [
         [
             Paragraph("<b>Raporu Hazırlayan:</b><br/>Mustafa Yağcı<br/>Elektronik & Sistem Mühendisi | Quantitative Developer", styles['MetaBoxText']),
-            Paragraph("<b>GitHub:</b> github.com/Mustafa-Yagci<br/><b>E-Posta:</b> mrmustafayagci@gmail.com<br/><b>Konum:</b> Palermo, İtalya / Türkiye", styles['MetaBoxText']),
+            Paragraph("<b>GitHub:</b> github.com/Mustafa-Yagci<br/><b>E-Posta:</b> mrmustafayagci@gmail.com<br/><b>Konum:</b> Italy", styles['MetaBoxText']),
             Paragraph("<b>Doğrulama Notu:</b><br/>Bu belgedeki tüm istatistiki ve finansal veriler simülasyon kodlarıyla doğrulanmış ve kanıtlanmıştır.", styles['MetaBoxText'])
         ]
     ]
