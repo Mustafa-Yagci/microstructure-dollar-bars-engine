@@ -8,6 +8,11 @@
 
 > **High-frequency market microstructure engine implementing Marcos López de Prado's information-driven Dollar Bars, trade aggressor classification, and Volume-Synchronized Probability of Toxicity (VPIN) for institutional machine learning pipelines.**
 
+### 📄 Research White Paper & Technical Reports
+- 🇬🇧 **English Master White Paper (PDF):** [`Market_Microstructure_and_Dollar_Bars_Whitepaper.pdf`](Market_Microstructure_and_Dollar_Bars_Whitepaper.pdf)
+- 🌐 **Interactive Standalone Report (HTML):** [`Market_Microstructure_and_Dollar_Bars_Whitepaper.html`](Market_Microstructure_and_Dollar_Bars_Whitepaper.html)
+- 🇹🇷 **Türkçe Master Rapor (PDF):** [`docs/Dolar_Barlari_ve_Mikroyapi_Master_Raporu.pdf`](docs/Dolar_Barlari_ve_Mikroyapi_Master_Raporu.pdf)
+
 ---
 
 ## 1. Executive Summary & The Problem of Time Bars
